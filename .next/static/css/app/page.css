@@ -1,0 +1,120 @@
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[13].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[13].oneOf[9].use[5]!./src/components/ui-kit/index.module.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.ui-kit_wrap__82vAc {
+  position: relative;
+  z-index: 5;
+}
+
+.ui-kit_selected__3u4l_ {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 150%;
+  color: #000;
+  border-radius: 16px;
+  width: 132px;
+  height: 40px;
+  background: #333230;
+  cursor: pointer;
+  border: 2px solid #D4230E;
+  color: #fff;
+}
+.ui-kit_selected__3u4l_ svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 18px;
+}
+.ui-kit_selected__3u4l_ svg * {
+  fill: #fff;
+}
+
+.ui-kit_rotate__Qxh4E {
+  transform: translateY(-50%) rotate(180deg) !important;
+}
+
+.ui-kit_list__wARll {
+  z-index: 1;
+  position: relative;
+}
+
+.ui-kit_drop__yh97r {
+  bottom: -10px;
+  padding-bottom: 25px;
+  padding-top: 15px;
+  position: absolute;
+  z-index: 1;
+  background: #333230;
+  width: 100%;
+  border-radius: 25px 25px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ui-kit_item__ljtHB {
+  cursor: pointer;
+  text-align: center;
+}
+
+.ui-kit_boxed__e_tOm .ui-kit_selected__3u4l_ {
+  width: 100%;
+}
+
+.ui-kit_column__GtUl6 + .ui-kit_column__GtUl6 {
+  margin-top: 15px;
+}
+
+.ui-kit_first__rCL_6 {
+  z-index: 7;
+}
+
+.ui-kit_mixed__F0FRp {
+  justify-content: flex-start;
+  text-align: left;
+  height: 40px;
+  padding-left: 20px;
+}
+
+@media (max-width: 1080px) {
+  .ui-kit_selected__3u4l_ {
+    height: 40px;
+  }
+}
+.ui-kit_cards__EHPsR {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 8px;
+  gap: 8px;
+  border-radius: 8px;
+  padding: 10px;
+  max-height: 100%;
+  overflow-y: auto;
+}
+.ui-kit_cards__item__np55M img {
+  max-width: 100%;
+  border-radius: 8px;
+  height: 100%;
+  max-height: 125px;
+}
+.ui-kit_cards__item__np55M {
+  box-shadow: 0px 3px 14px 9px rgba(2, 108, 73, 0.5);
+  border-radius: 8px;
+}
+.ui-kit_cards__item__np55M:nth-child(n+15) {
+  box-shadow: 0px 3px 14px 9px rgba(255, 255, 255, 0.5);
+}
+.ui-kit_cards__item__np55M:nth-child(n+17) {
+  box-shadow: 0px 3px 14px 9px rgba(255, 0, 0, 0.5);
+}
+.ui-kit_cards__EHPsR .ui-kit_selected__card__bnydl {
+  border-radius: 8px;
+  transform: scale(1.1);
+  box-shadow: 0px 3px 14px 9px rgba(255, 255, 255, 0.4);
+}

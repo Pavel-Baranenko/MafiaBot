@@ -1,0 +1,6 @@
+{
+  "/games/[id]/page": "app/games/[id]/page.js",
+  "/page": "app/page.js",
+  "/profile/page": "app/profile/page.js",
+  "/games/control/[id]/page": "app/games/control/[id]/page.js"
+}
