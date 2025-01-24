@@ -17,23 +17,23 @@ const StoreWrapper = observer(({ children }: { children: ReactNode }) => {
   const [webApp, setWebApp] = React.useState<IWebApp | null>(null);
   let tg_user_id: number
 
-  React.useEffect(() => {
-    const app = (window as any).Telegram?.WebApp;
-    console.log(app);
+  // React.useEffect(() => {
+  //   const app = (window as any).Telegram?.WebApp;
+  //   console.log(app);
 
-    if (app) {
-      app.ready();
-      setWebApp(app);
-      tg_user_id = app.initDataUnsafe.user.id
-    }
-  }, []);
+  //   if (app) {
+  //     app.ready();
+  //     setWebApp(app);
+  //     tg_user_id = app.initDataUnsafe.user.id
+  //   }
+  // }, []);
 
   const user = {
-    tg_id: webApp ? webApp.initDataUnsafe.user.id : 0,
+    // tg_id: webApp ? webApp.initDataUnsafe.user.id : 0,
     // tg_id: 122445,
-    // tg_id: 6824597012,
-    role: (webApp && (webApp.initDataUnsafe.user.id == 1075329442 || webApp.initDataUnsafe.user.id == 915131260 || webApp.initDataUnsafe.user.id == 6824597012)) ? "OWNER" : "USER",
-    firstname: webApp ? webApp.initDataUnsafe.user.username : ""
+    tg_id: 6824597012,
+    // role: (webApp && (webApp.initDataUnsafe.user.id == 1075329442 || webApp.initDataUnsafe.user.id == 915131260 || webApp.initDataUnsafe.user.id == 6824597012)) ? "OWNER" : "USER",
+    // firstname: webApp ? webApp.initDataUnsafe.user.username : ""
   }
 
   if (user.tg_id != 0) {

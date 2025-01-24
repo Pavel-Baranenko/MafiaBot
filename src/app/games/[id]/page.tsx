@@ -10,6 +10,7 @@ import { enemies, userActionsList, stages, teamList, InfoEnemies, InfoCard } fro
 let currentTime = "0"
 let currentStage = 0
 
+let gameMove = true
 export default function GamePage({ params }: { params: { id: string } }) {
 
   const { store } = React.useContext(Context)
@@ -41,6 +42,11 @@ export default function GamePage({ params }: { params: { id: string } }) {
     return userActionsList[roleName];
   }
 
+  const saveToLocalStorage = (e: boolean) => {
+    // localStorage.setItem("move", e ? "move" : "")
+    gameMove = e
+  }
+
   let actions = player ? getRoleActions(player.role) : null
 
   let teams = player?.role ? teamList[player?.role] : null
@@ -52,10 +58,12 @@ export default function GamePage({ params }: { params: { id: string } }) {
     })
     return name
   }
+  console.log(gameMove);
 
 
   const nominate = async (user_id: number) => {
     setMove(false)
+    saveToLocalStorage(false)
     if (game?.id) {
       const response = await GameService.nomination(user_id, game?.id, game?.round)
       const name = await getNameById(user_id)
@@ -73,6 +81,7 @@ export default function GamePage({ params }: { params: { id: string } }) {
 
   const vote = async (user_id: number) => {
     setMove(false)
+    saveToLocalStorage(false)
     if (game?.id && game?.round != undefined) {
       const response = await GameService.nominationSelect(user_id, game?.id, game?.round)
       const name = await getNameById(user_id)
@@ -95,9 +104,6 @@ export default function GamePage({ params }: { params: { id: string } }) {
       setUsers(response.data.users)
       setGame(response.data.game)
 
-
-
-
       if ((currentStage != response.data.game.stage) && response.data.game.stage != undefined) {
         setMove(true)
         setMessage('')
@@ -105,7 +111,7 @@ export default function GamePage({ params }: { params: { id: string } }) {
         setSelectedUser(undefined)
         setNextUser(undefined)
         setGameTime(0);
-
+        saveToLocalStorage(true)
         setGameTime(Number(response.data.game.timer));
 
         // if (currentTime != response.data.game.timer) {
@@ -155,6 +161,7 @@ export default function GamePage({ params }: { params: { id: string } }) {
 
     if (player?.role != "journalist") {
       setMove(false)
+      saveToLocalStorage(false)
       if (options == "check") {
         if (player?.role == "comissar") {
           if (user.type == "dark") {
@@ -185,23 +192,21 @@ export default function GamePage({ params }: { params: { id: string } }) {
     if (player?.role == "journalist") {
 
       if (nextUser != undefined && selectedUser != undefined) {
-        console.log('aadddda');
 
         users[selectedUser].type == users[nextUser].type ? setMessage("В одной команде") : setMessage("В разных командах")
         setMove(false)
+        saveToLocalStorage(false)
       }
       else {
         setMessage("Выберете второго игрока")
         setJournalist(true)
-        console.log('sssssss');
-
       }
     }
     if (player?.role && enemies[player?.role] == user.role) {
       action = 'kill'
       killed_by_opponent = true
       setMove(false)
-      // userMove = false
+      saveToLocalStorage(false)
     }
     const response = await GameService.userMove({
       action: action,
@@ -463,7 +468,7 @@ export default function GamePage({ params }: { params: { id: string } }) {
             <button className="user__roles" onClick={() => { setTeam(!team) }}>
               <svg enable-background="new 0 0 24 24" id="Layer_1" version="1.0" viewBox="0 0 24 24"><g><circle cx="18.5" cy="6.5" r="2.5" /></g><g><circle cx="5.5" cy="6.5" r="2.5" /></g><g><circle cx="12" cy="5" r="3" /></g><path d="M18.5,10c-0.5,0-1.6,0.2-2,0.5c0,0,0.5,1.1,0.5,2.5c0,0-1.2-4-5-4s-5,4-5,4c0-1.4,0.5-2.5,0.5-2.5C7.1,10.2,6,10,5.5,10  C3.8,10,2,12,2,13.3V19c0,1.1,0.9,2,2,2h2.9c0.9-0.9,2.5-2,5.1-2s4.2,1.1,5.1,2H20c1.1,0,2-0.9,2-2v-5.7C22,12,20,10,18.5,10z   M12,18c-1.4,0-2.5-1.1-2.5-2.5c0-1.4,1.1-2.5,2.5-2.5s2.5,1.1,2.5,2.5C14.5,16.9,13.4,18,12,18z" /></svg>
             </button>
-            {(player?.status == "live" && move) &&
+            {(player?.status == "live" && move && gameMove) &&
               <>
 
                 {(game.stage == 3) &&
